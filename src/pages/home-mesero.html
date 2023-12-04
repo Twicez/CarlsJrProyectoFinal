@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mesero</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/60239c85dc.js" crossorigin="anonymous"></script>
+    <link rel="icon" href="https://carlsjrmx.netlify.app/assets/favicons/cropped-favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" href="https://carlsjrmx.netlify.app/assets/favicons/cropped-favicon-192x192.png" sizes="192x192" />
+    <link rel="apple-touch-icon" href="https://carlsjrmx.netlify.app/assets/favicons/cropped-favicon-180x180.png" />
+    <meta name="msapplication-TileImage" content="https://carlsjrmx.netlify.app/assets/favicons/cropped-favicon-270x270.png" />
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+            <a class="navbar-brand" href="#">Mesero</a>
+            <button class="btn btn-success" type="button" id="cerrarSesionBtn"><a onclick="cerrarSesion()"><i class="fa-solid fa-right-from-bracket"></i></a></button>
+      </div>
+    </nav>
+
+    <div class="modal fade" id="confirmar-finalizar-modal" tabindex="-1" aria-labelledby="confirmar-eliminar-modal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmar-eliminar">Finalizar orden</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    ¿Seguro que quiere finalizar la órden?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="cancelar-finalizar-btn">Cancelar</button>
+                    <button type="button" class="btn btn-success" data-bs-dismiss="modal" id="confirmar-finalizar-btn">Finalizar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="confirmar-eliminar-modal" tabindex="-1" aria-labelledby="confirmar-eliminar-modal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmar-eliminar">Eliminar orden</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    ¿Seguro que quieres eliminar la orden? Si lo haces ya no podrás recuperarla.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="cancelar-eliminar-btn">Cancelar</button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal" id="confirmar-eliminar-btn">Eliminar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="modalOrden" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Registrar órden</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-danger text-center visually-hidden" id="alert" role="alert"></div>
+                    <div class="alert alert-success text-center visually-hidden" id="message" role="message"></div>
+                    <div class="modal fade" id="confirmar-crear-orden-modal" tabindex="-1" aria-labelledby="confirmar-eliminar-modal" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="confirmar-crear-orden">Crear orden</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    ¿Está seguro de querer agregar la orden?
+                                </div>
+                                <div id="campo-total" class="text-center">
+                                    
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="cancelar-craer-orden-btn">Cancelar</button>
+                                    <button type="button" class="btn btn-success" data-bs-dismiss="modal" id="confirmar-crear-orden-btn">Crear orden</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <form>
+                        <div class="mb-3">
+                            <label for="nombreCliente" class="form-label">Nombre del cliente</label>
+                            <input type="text" class="form-control" name="nombreCliente" id="nombreCliente" aria-describedby="nombreCliente">
+                        </div>
+                        <div class="mb-3">
+                            <label for="numeroTelefono" class="form-label">Número de teléfono</label>
+                            <input type="number" class="form-control" name="numeroTelefono" id="numeroTelefono">
+                        </div>
+                        <div class="mb-3">
+                            <label for="producto" class="form-label">Productos</label>
+                            <select class="form-select" name="productos" id="productos" multiple>
+
+                            </select>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            <button type="button" class="btn btn-primary" id="agregar-orden-btn">Agregar órden</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <div class="text-center mb-3">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalOrden">
+                Registrar órden
+            </button>
+        </div>
+        <div class="border rounded">
+            <h4 class="text-center mt-3">Listado de Órdenes</h4>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Número de Orden</th>
+                        <th scope="col">Nombre del Cliente</th>
+                        <th scope="col">Número de Teléfono</th>
+                        <th scope="col">Productos</th>
+                        <th scope="col">Total</th>
+                        <th scope="col">Estatus</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="tabla-ordenes-body">
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="/js/cerrar-sesion.js"></script>
+    <script src="/js/agregar-orden.js"></script>
+    <script src="/js/eliminar-orden.js"></script>
+</body>
+</html>

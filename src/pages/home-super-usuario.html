@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Jefe</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/60239c85dc.js" crossorigin="anonymous"></script>
+    <link rel="icon" href="https://carlsjrmx.netlify.app/assets/favicons/cropped-favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" href="https://carlsjrmx.netlify.app/assets/favicons/cropped-favicon-192x192.png" sizes="192x192" />
+    <link rel="apple-touch-icon" href="https://carlsjrmx.netlify.app/assets/favicons/cropped-favicon-180x180.png" />
+    <meta name="msapplication-TileImage" content="https://carlsjrmx.netlify.app/assets/favicons/cropped-favicon-270x270.png" />
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Jefe de jefes</a>
+            <button class="btn btn-success" type="button" id="cerrarSesionBtn"><a onclick="cerrarSesion()"><i class="fa-solid fa-right-from-bracket"></i></a></button>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="d-flex justify-content-center align-items-center">
+                <button type="button" id="agregar-usuario" class="btn btn-primary col-md-6 d-flex justify-content-center align-items-center">Agregar Usuario</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="confirmar-eliminar-modal" tabindex="-1" aria-labelledby="confirmar-eliminar-modal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmar-eliminar">Eliminar usuario</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    ¿Seguro que quieres eliminar al usuario? Si lo haces ya no podrás recuperarlo.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="cancelar-eliminar-btn">Cancelar</button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal" id="confirmar-eliminar-btn">Eliminar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-5 p-5 border rounded visually-hidden" id="formulario">
+        <div class="alert alert-danger text-center visually-hidden" id="alert" role="alert"></div>
+        <div class="alert alert-success text-center visually-hidden" id="message" role="message"></div>
+        <form>
+            <div class="mb-3">
+                <label for="nombreUsuario" class="form-label">Usuario</label>
+                <input type="text" class="form-control" name="nombreUsuario" id="nombreUsuario">
+            </div>
+            <div class="mb-3">
+                <label for="contrasenia" class="form-label">Contraseña</label>
+                <input type="password" class="form-control" name="contrasenia" id="contrasenia">
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="puesto">Tipo de usuario</label>
+                <select class="form-select" name="puesto" id="puesto">
+                    <option value="mesero">Mesero</option>
+                    <option value="administrador">Administrador</option>
+                    <option value="cocinero">Cocinero</option>
+                </select>
+            </div>
+            <button type="button" class="btn btn-primary" id="registrar-usuario">Registrar nuevo usuario</button>
+        </form>
+    </div>
+
+    <div class="container mt-5 border rounded">
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Usuario registrado</th>
+                    <th scope="col">Puesto</th>
+                    <th scope="col" class="text-end">Operación</th>
+                </tr>
+            </thead>
+            <tbody id="tabla-usuarios-body">
+            </tbody>
+        </table>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="/js/cargar-usuarios.js"></script>
+    <script src="/js/cerrar-sesion.js"></script>
+    <script src="/js/agregar-usuario-form.js"></script>
+    <script src="/js/eliminar-usuario.js"></script>
+    <!-- <script src="/js/editar-usuario.js"></script> -->
+</body>
+</html>

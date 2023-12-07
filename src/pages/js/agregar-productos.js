@@ -108,6 +108,7 @@ const agregarIngrediente = async (ingrediente) => {
     }
 }
 
+
 const agregarProducto = async (producto) => {
     const opciones = {
         method: 'POST',

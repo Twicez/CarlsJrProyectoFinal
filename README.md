@@ -18,5 +18,5 @@ npm start
 
 
 Link video de explicacion:
-(Pendiente)
+https://drive.google.com/file/d/1OtjEgFkjTxREOr_ZW5K1CUv1macKyjmD/view?usp=sharing
 ---
